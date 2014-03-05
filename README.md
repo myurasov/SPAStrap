@@ -9,7 +9,7 @@ Installation
 * Clone project by running `git clone http://github.com/myurasov/spa-bootstrap.git`
 * Run `composer update` in root dir
 * Run `bower update` in `src/www/vendor`
-* Edit database settings in `src/config.dev.php`
+* Edit database settings in `src/modules/config.dev.php`
 * Create database for your project
 * Run `sudo src/cli/console app:service:install`
 * Add users with `app:admin:users` command
