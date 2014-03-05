@@ -1,6 +1,6 @@
 .DS_Store
-vendor/
-composer.lock
-data/
-src/www/vendor/bower_components
-src/www/build
+/vendor/
+/composer.lock
+/data/
+/src/www/vendor/bower_components
+/src/www/build
