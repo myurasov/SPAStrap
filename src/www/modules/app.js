@@ -6,7 +6,14 @@ var app = angular.module('SPABootstrap', ['ui.router']);
 
 // api endpoint
 app.factory('apiEndpoint', function ($window) {
-  return $window.location.pathname + '/api/v1';
+  var pathName = $window.location.pathname;
+
+  // remove trailing slash
+  if (pathName.substr(-1) === '/') {
+    pathName = pathName.substr(0, pathName.length - 1);
+  }
+
+  return pathName + '/api/v1';
 });
 
 // get current user on startup
