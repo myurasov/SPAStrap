@@ -1,0 +1,37 @@
+{
+  "name": "myurasov/spa-bootstrap",
+  "description": "SPABootstrap",
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mikhail Yurasov",
+      "email": "me@yurasov.me"
+    }
+  ],
+
+  "require": {
+
+    "silex/silex": "~1.0",
+    "doctrine/dbal": "~2.4",
+    "doctrine/orm": "~2.4",
+    "dflydev/doctrine-orm-service-provider": "*",
+    "symfony/console": "~2.4",
+    "symfony/validator": "~2.4",
+    "twig/twig": "~1.0",
+    "ircmaxell/password-compat": "dev-master",
+
+    "myurasov/mym-auth": "~1.0.0",
+    "myurasov/mym-utils": "~1.0.0",
+    "myurasov/mym-rest-tools": "~1.0.0",
+
+    "php": ">=5.3.3"
+  },
+
+  "autoload": {
+    "psr-0": {
+      "SPABootstrap": "src/modules"
+    }
+  }
+}

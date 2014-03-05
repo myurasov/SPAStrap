@@ -1,0 +1,84 @@
+/**
+ * Remove responsiveness
+ * @copyright 2014 Mikhail Yurasov <me@yurasov.me>
+ */
+
+.row {
+  .make-row(0 /* gutter */);
+}
+
+.navbar-form.navbar-right:last-child {
+  margin-right: 0;
+}
+
+.navbar-form {
+  padding: 0;
+}
+
+/* Reset the container */
+.container {
+  max-width: none !important;
+  width: @page-w;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.container .navbar-header,
+.container .navbar-collapse {
+  margin-right: 0;
+  margin-left: 0;
+}
+
+/* Always float the navbar header */
+.navbar-header {
+  float: left;
+}
+
+/* Undo the collapsing navbar */
+.navbar-collapse {
+  display: block !important;
+  height: auto !important;
+  padding-bottom: 0;
+  overflow: visible !important;
+}
+
+.navbar-toggle {
+  display: none;
+}
+
+.navbar-collapse {
+  border-top: 0;
+}
+
+.navbar-brand {
+  margin-left: 0px !important;
+}
+
+/* Always apply the floated nav */
+.navbar-nav {
+  float: left;
+  margin: 0;
+}
+.navbar-nav > li {
+  float: left;
+}
+.navbar-nav > li > a {
+}
+
+/* Redeclare since we override the float above */
+.navbar-nav.navbar-right {
+  float: right;
+}
+
+/* Undo custom dropdowns */
+.navbar .navbar-nav .open .dropdown-menu {
+  position: absolute;
+  float: left;
+}
+
+*[class^='col-'] {
+  &:first-child {
+  }
+  &:last-child {
+  }
+}

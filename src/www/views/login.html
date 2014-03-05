@@ -1,0 +1,29 @@
+<div class="vCenter loginScreen" ng-submit="login()" mym-autofill-fix>
+<div class="logo"></div>
+
+  <form role="form" class="fullscreenForm" name="loginForm" novalidate>
+
+    <h3>Log In</h3>
+
+    <div class="errorMessage" ng-if="errorMessage">{{ errorMessage }}</div>
+
+    <div class="form-group">
+      <input type="email" name="email" class="form-control" placeholder="email"
+             ng-model="profile.email"
+             ng-required="true">
+    </div>
+
+    <div class="form-group">
+      <input type="password" name="password" class="form-control" placeholder="password"
+             ng-model="profile.password"
+             ng-required="true"
+             ng-minlength="1">
+    </div>
+
+    <div class="footerButtons">
+      <button type="submit" class="btn btn-default"
+        ng-disabled="loginForm.$invalid || working">{{ working ? 'Working...' : 'Submit' }}</button>
+    </div>
+  </form>
+
+</div>

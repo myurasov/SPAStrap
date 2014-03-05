@@ -1,0 +1,24 @@
+# .htaccess
+
+AddDefaultCharset UTF-8
+
+Options -Indexes
+DirectoryIndex index.php
+
+RewriteEngine On
+
+# redirect all to index.php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !(/images|/resources|/scripts|robots\.txt|sitemap\.xml|favicon\.ico)
+RewriteRule ^.*$ /index.php [L]
+
+# cross-domain access
+Header set Access-Control-Allow-Origin "*"
+
+<IfModule mod_headers.c>
+  <FilesMatch '\.(png|jpg|jpeg|ico|gif|js|css|svg|ttf|woff|eot)$'>
+    # 1 month caching of statics files
+    Header set Cache-Control "max-age=2592000, public"
+  </FilesMatch>
+</IfModule>

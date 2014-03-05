@@ -1,0 +1,91 @@
+/**
+ * Forms
+ * @copyright 2014 Mikhail Yurasov <me@yurasov.me>
+ */
+
+form {
+
+  h3 {
+    margin-top: 0px !important;
+    margin-bottom: 20px !important;
+  }
+
+  // 2 elements per row
+  .controlGroup2 {
+
+    // prevent spaces from being displayed
+
+    font-size: 0;
+
+    * {
+      font-size: @font-size-base;
+    }
+
+    // size inputs
+
+    .inputContainer {
+
+      .box-sizing(border-box);
+      vertical-align: top;
+      display: inline-block;
+      width: 50%;
+      padding-right: 10px;
+      padding-left: 10px;
+
+      &:first-child {
+        padding-left: 0;
+      }
+
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  .errorMessage {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    .bg-danger;
+    .text-danger;
+  }
+
+  .checkboxGroup {
+    .content-columns(2, 15px);
+
+    .checkbox-inline {
+      margin-left: 0px;
+      margin-right: 0px;
+    }
+  }
+
+  .requiredMark {
+    color: @alert-danger-text;
+    font-weight: normal !important;
+  }
+}
+
+// form with frame around it, centered at the screen
+
+.fullscreenForm {
+
+  background-color: @input-bg;
+  border: 1px solid @btn-default-border;
+  border-radius: @border-radius-large;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 30px;
+
+  .box-sizing(border-box);
+  .box-shadow(0px 0px 50px rgba(0, 0, 0, 0.25));
+
+  .footerButtons,
+  .formLinks {
+    text-align: center;
+  }
+
+  h3 {
+    text-align: center;
+  }
+}

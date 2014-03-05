@@ -1,0 +1,99 @@
+/**
+ * Layout
+ * @copyright 2014 Mikhail Yurasov <me@yurasov.me>
+ */
+
+body {
+  padding-top: @navbar-height + 1px + @content-gutter-y;
+  padding-bottom: 0px;
+  min-width: @page-w;
+  -webkit-font-smoothing: subpixel-antialiased !important;
+  text-rendering: optimizeLegibility !important;
+//  background-image: url("/images/bg.png");
+  position: relative;
+}
+
+// navbar
+
+@logoH: 35px;
+@logoW: 185px;
+
+.logo {
+  height: @logoH;
+  width: @logoW;
+  margin-top: round((@navbar-height - @logoH) / 2) + 1px;
+  background-image: url("../images/logo@2x.png");
+  background-size: @logoW @logoH;
+}
+
+.navbar-brand {
+  .logo;
+  padding: 0px;
+  vertical-align: top;
+  margin-right: 25px;
+}
+
+.navbar {
+  input[type=search] {
+    border-radius: @input-height-base / 2;
+    width: 200px;
+  }
+
+  .search-icon {
+    margin: 0;
+    vertical-align: top;
+    height: @input-height-base;
+    line-height: @input-height-base;
+    margin-top: -1px;
+    color: @input-border-focus;
+    left: -25px;
+    overflow: visible;
+    position: relative;
+    width: 0;
+  }
+}
+
+// login/signup nav buttons
+.navbar {
+  .btn.login, .btn.signup {
+    width: 75px;
+  }
+}
+
+// sticky footer
+
+html,
+body {
+  height: 100%;
+}
+
+/* Wrapper for page content to push down footer */
+.contentWrap {
+  min-height: 100%;
+  height: 100%;
+  margin: 0 auto -(@navbar-height + 1px);
+  padding: 0 0 (@navbar-height + 1px) + @content-gutter-y;
+  display: table; // to allow vertical centering
+}
+
+// footer
+
+#footer {
+  @footerH: @navbar-height;
+
+  background-color: @navbar-default-bg;
+  border-top: 1px solid @navbar-default-border;
+  text-align: center;
+
+  .container {
+    height: @footerH;
+    line-height: @footerH;
+    padding-left: 0.07px; // fix blurred font
+  }
+}
+
+// center vertically
+.vCenter {
+  display: table-cell;
+  vertical-align: middle;
+}

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html ng-app="SPABootstrap">
+
+<head>
+  <meta charset="utf-8">
+
+  <link rel="shortcut icon" type="image/png" href="/images/favicon.png">
+
+  {# styles #}
+  <link href="build/bootstrap.css?{% include 'build' %}" rel="stylesheet">
+  <link href="build/main.css?{% include 'build' %}" rel="stylesheet">
+
+  <title>{{{ app['project'] }}}</title>
+
+</head>
+
+<body ng-controller="LayoutController" ng-cloak>
+
+  <header ng-include="'views/navbar.html'"></header>
+  <div class="contentWrap container" ui-view="contentView">
+    {#<div ng-include="'views/login.html'"></div>#}
+  </div>
+  <footer ng-include="'views/footer.html'"></footer>
+
+  {# libraries #}
+
+  {% if app.enviroment == 'dev' %}
+
+    <script type="text/javascript" src="vendor/bower_components/jquery/jquery.js"></script>
+    <script type="text/javascript" src="vendor/bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script type="text/javascript" src="vendor/bower_components/angular/angular.js"></script>
+    <script type="text/javascript" src="vendor/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+
+  {% else %}
+
+    <script type="text/javascript" src="vendor/bower_components/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="vendor/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="vendor/bower_components/angular/angular.min.js"></script>
+    <script type="text/javascript" src="vendor/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+
+  {% endif %}
+
+  {# app #}
+  <script type="text/javascript" src="modules/app.js?{% include 'build' %}"></script>
+  <script type="text/javascript" src="modules/utils.js?{% include 'build' %}"></script>
+  <script type="text/javascript" src="modules/filters.js?{% include 'build' %}"></script>
+  <script type="text/javascript" src="modules/directives/mym-autofill-fix.js?{% include 'build' %}"></script>
+  <script type="text/javascript" src="modules/controllers/LayoutController.js?{% include 'build' %}"></script>
+  <script type="text/javascript" src="modules/controllers/LoginController.js?{% include 'build' %}"></script>
+
+</body>
+</html>

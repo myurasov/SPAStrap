@@ -1,0 +1,40 @@
+/**
+ * @copyright 2014 Mikhail Yurasov <me@yurasov.me>
+ */
+
+// remove focused outline
+a:focus,
+.btn:focus,
+input[type="file"]:focus,
+input[type="radio"]:focus,
+input[type="checkbox"]:focus {
+  outline: none;
+}
+
+//
+
+.fullsreenAlert {
+  max-width: 500px;
+  margin: 0 auto;
+  .box-shadow(0px 0px 50px rgba(0, 0, 0, 0.25));
+  background-color: @input-bg;
+  border: 1px solid @btn-default-border;
+  border-radius: @border-radius-large;
+  padding: 30px;
+  line-height: 150%;
+}
+
+.loginScreen {
+  width: 400px;
+}
+
+.loginScreen {
+
+  .logo {
+    margin-left: -@logoW/2;
+    left: 50%;
+    margin-top: -@logoH/2;
+    top: 18%;
+    position: absolute;
+  }
+}

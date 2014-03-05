@@ -1,0 +1,72 @@
+#!/usr/bin/env php
+<?php
+
+/**
+ * App console
+ * @copyright 2014 Mikhail Yurasov <me@yurasov.me>
+ */
+
+namespace SPABootstrap;
+
+use Doctrine\DBAL\Tools\Console\Helper\ConnectionHelper;
+use Doctrine\ORM\Tools\Console\Helper\EntityManagerHelper;
+use mym\Util\Silex\SilexAppHelper;
+use mym\Auth\Command\AuthServiceHelper;
+use Symfony\Component\Console\Application;
+use Symfony\Component\Console\Helper\DialogHelper;
+use Symfony\Component\Console\Helper\FormatterHelper;
+use Symfony\Component\Console\Helper\HelperSet;
+use Symfony\Component\Console\Helper\TableHelper;
+
+require __DIR__ . '/../modules/app.php';
+
+$helperSet = new HelperSet(array(
+  'em' => new EntityManagerHelper($app['orm.em']),
+  'app' => new SilexAppHelper($app),
+  'auth' => new AuthServiceHelper($app['auth']),
+  'dialog' => new DialogHelper(),
+  'formatter' => new FormatterHelper(),
+  'table' => new TableHelper(),
+  'db' => new ConnectionHelper($app['db'])
+));
+
+$cli = new Application();
+
+$cli->setCatchExceptions(true);
+$cli->setHelperSet($helperSet);
+
+// doctrine commands
+$cli->addCommands(
+  array(
+    // Doctrine ORM
+    new \Doctrine\ORM\Tools\Console\Command\SchemaTool\CreateCommand(),
+    new \Doctrine\ORM\Tools\Console\Command\SchemaTool\UpdateCommand(),
+    new \Doctrine\ORM\Tools\Console\Command\SchemaTool\DropCommand(),
+    new \Doctrine\ORM\Tools\Console\Command\ClearCache\QueryCommand(),
+    new \Doctrine\ORM\Tools\Console\Command\ClearCache\ResultCommand(),
+    new \Doctrine\ORM\Tools\Console\Command\EnsureProductionSettingsCommand(),
+    new \Doctrine\ORM\Tools\Console\Command\GenerateEntitiesCommand(),
+    new \Doctrine\ORM\Tools\Console\Command\GenerateRepositoriesCommand(),
+    new \Doctrine\ORM\Tools\Console\Command\GenerateProxiesCommand(),
+    new \Doctrine\ORM\Tools\Console\Command\InfoCommand(),
+    new \Doctrine\ORM\Tools\Console\Command\RunDqlCommand(),
+    new \Doctrine\ORM\Tools\Console\Command\ValidateSchemaCommand(),
+
+    // Doctrine DBAL
+    new \Doctrine\DBAL\Tools\Console\Command\ImportCommand(),
+    new \Doctrine\DBAL\Tools\Console\Command\ReservedWordsCommand(),
+    new \Doctrine\DBAL\Tools\Console\Command\RunSqlCommand(),
+
+    // app
+    new \SPABootstrap\Commands\Service\CreatePaths(),
+    new \SPABootstrap\Commands\Service\Install(),
+    new \SPABootstrap\Commands\Admin\Users(),
+
+    // mym
+    new \mym\Auth\Command\Install(),
+    new \mym\Auth\Command\Cleanup()
+  )
+);
+
+
+$cli->run();
