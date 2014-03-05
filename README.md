@@ -6,6 +6,7 @@ Bootstrap project for creating SPA sites with RESTful API backend. Utilizes __An
 Installation
 ------------
 
+* Clone project by running `git clone http://github.com/myurasov/spa-bootstrap.git`
 * Run `composer update` in root dir
 * Run `bower update` in `src/www/vendor`
 * Edit database settings in `src/config.dev.php`
